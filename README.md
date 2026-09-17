@@ -299,15 +299,37 @@ Key lessons included:
 
 ## Project Evidence
 
-The repository includes selected screenshots demonstrating:
+The following screenshots document the security monitoring and active defense workflow.
 
-1. CloudWatch alarm configuration and detection
-2. EventBridge detection rule and targets
-3. CloudTrail evidence of sensitive API activity
-4. Security notification generated during testing
-5. IAM containment and `AccessDenied` validation
+### CloudWatch Detection
 
-Sensitive information such as secret values, credentials, access keys, and account identifiers has been excluded or redacted from the published evidence.
+The CloudWatch alarm entered the **In Alarm** state after the controlled sensitive-resource access event.
+
+![CloudWatch alarm fired](evidence/01-cloudwatch-alarm-fired.png)
+
+### EventBridge Detection and Response
+
+The EventBridge rule matched the sensitive access event and was configured to invoke SNS and the active defense Lambda.
+
+![EventBridge rule](evidence/02-eventbridge-rule.png)
+
+### CloudTrail Forensic Evidence
+
+The CloudTrail event records the `GetSecretValue` API call against the controlled sensitive resource.
+
+![CloudTrail GetSecretValue event](evidence/03-cloudtrail-getsecretvalue.png)
+
+### Security Notification
+
+The CloudWatch alarm generated an SNS security notification.
+
+![SNS security alert](evidence/04-sns-security-alert.png)
+
+### Active Defense — Access Denied
+
+After the automated containment action, the controlled test identity could no longer retrieve the sensitive secret.
+
+![Access denied containment](evidence/05-access-denied-containment.png)
 
 ## Security Notice
 
