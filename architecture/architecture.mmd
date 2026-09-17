@@ -1,0 +1,13 @@
+flowchart TD
+    A[Sensitive Secret Access] --> B[AWS CloudTrail]
+
+    B --> C[CloudWatch Logs]
+    C --> D[Metric Filter]
+    D --> E[CloudWatch Alarm]
+    E --> F[SNS Security Alert]
+
+    B --> G[EventBridge Rule]
+    G --> H[SNS Security Alert]
+    G --> I[ActiveDefenseRevokeUser Lambda]
+    I --> J[IAM Policy Detachment]
+    J --> K[Access Denied]
