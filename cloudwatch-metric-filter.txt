@@ -1,0 +1,11 @@
+Metric Filter:
+{ ($.eventSource = "secretsmanager.amazonaws.com") && ($.eventName = "GetSecretValue") }
+
+Metric Namespace:
+SecurityMonitoring
+
+Metric Name:
+ProductionDatabaseSecretAccess
+
+Metric Value:
+1
